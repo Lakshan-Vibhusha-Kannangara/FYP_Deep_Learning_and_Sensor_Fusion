@@ -1,5 +1,13 @@
 # FYP_Deep_Learning_and_Sensor_Fusion
 
+Robot Platform-Dr Robot Jaguar
+
+
+
+https://user-images.githubusercontent.com/77208138/235839577-5a269695-533c-4510-a6c4-3a0ebdd944e2.mp4
+
+
+
 Navigation Part ROS Simulation
 
 
