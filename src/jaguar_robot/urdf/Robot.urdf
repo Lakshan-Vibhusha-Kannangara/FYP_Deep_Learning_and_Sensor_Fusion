@@ -1,0 +1,341 @@
+<?xml version="1.0" ?>
+<robot name="jaguar_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- Included URDF/XACRO Files -->
+  <!-- Wheel Properties -->
+  <!-- TODO -->
+  <!-- TODO -->
+  <!-- Base Size -->
+  <!-- TODO -->
+  <!-- TODO -->
+  <!-- Wheel Mounting Positions -->
+  <!-- TODO -->
+  <!-- Laser Position -->
+  <!-- TODO -->
+  <!-- TODO -->
+  <!-- Laser Size -->
+  <!-- TODO -->
+  <!-- TODO -->
+  <!-- TODO -->
+  <!-- Camera Position -->
+  <!-- TODO -->
+  <!-- TODO -->
+  <!-- TODO -->
+  <!-- Laser Size -->
+  <!-- TODO -->
+  <!-- TODO -->
+  <!-- Base link is the center of the robot's bottom plate -->
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.18"/>
+      <geometry>
+        <box size="0.555 0.483 0.175"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 0.8"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0.18"/>
+      <!-- TODO -->
+      <geometry>
+        <box size="0.555 0.483 0.175"/>
+        <!-- TODO -->
+      </geometry>
+    </collision>
+  </link>
+  <!-- Interial link stores the robot's inertial information -->
+  <link name="inertial_link">
+    <inertial>
+      <mass value="33.455"/>
+      <!-- TODO -->
+      <origin xyz="-0.08748 -0.00085 0.09947"/>
+      <!-- TODO -->
+      <inertia ixx="0.6022" ixy="-0.02364" ixz="-0.1197" iyy="1.7386" iyz="-0.001544" izz="2.0296"/>
+      <!-- TODO -->
+    </inertial>
+  </link>
+  <joint name="inertial_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="inertial_link"/>
+  </joint>
+  <!-- IMU Link's exact position is unnecessary thus placed at the center of the platform.-->
+  <link name="imu_link"/>
+  <joint name="imu_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.175"/>
+    <!-- TODO -->
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+  </joint>
+  <!-- Jaguar wheel macros -->
+  <link name="front_left_wheel_link">
+    <inertial>
+      <mass value="2.637"/>
+      <!-- TODO -->
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.02467" ixy="0" ixz="0" iyy="0.02467" iyz="0" izz="0.04411"/>
+      <!-- TODO -->
+    </inertial>
+    <visual>
+      <origin rpy="1.570795 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.13"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.570795 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.13"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="front_left_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_wheel_link"/>
+    <origin rpy="0 0 0" xyz="0.1775 0.2865 0.13"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+  </joint>
+  <transmission name="front_left_wheel_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="front_left_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+    <joint name="front_left_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+  <link name="front_right_wheel_link">
+    <inertial>
+      <mass value="2.637"/>
+      <!-- TODO -->
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.02467" ixy="0" ixz="0" iyy="0.02467" iyz="0" izz="0.04411"/>
+      <!-- TODO -->
+    </inertial>
+    <visual>
+      <origin rpy="1.570795 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.13"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.570795 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.13"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="front_right_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_wheel_link"/>
+    <origin rpy="0 0 3.14159" xyz="0.1775 -0.2865 0.13"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+  </joint>
+  <transmission name="front_right_wheel_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="front_right_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+    <joint name="front_right_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+  <link name="rear_left_wheel_link">
+    <inertial>
+      <mass value="2.637"/>
+      <!-- TODO -->
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.02467" ixy="0" ixz="0" iyy="0.02467" iyz="0" izz="0.04411"/>
+      <!-- TODO -->
+    </inertial>
+    <visual>
+      <origin rpy="1.570795 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.13"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.570795 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.13"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rear_left_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_left_wheel_link"/>
+    <origin rpy="0 0 0" xyz="-0.1775 0.2865 0.13"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+  </joint>
+  <transmission name="rear_left_wheel_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="rear_left_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+    <joint name="rear_left_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+  <link name="rear_right_wheel_link">
+    <inertial>
+      <mass value="2.637"/>
+      <!-- TODO -->
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.02467" ixy="0" ixz="0" iyy="0.02467" iyz="0" izz="0.04411"/>
+      <!-- TODO -->
+    </inertial>
+    <visual>
+      <origin rpy="1.570795 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.13"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+    <collision>
+      <origin rpy="1.570795 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.13"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="rear_right_wheel" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_right_wheel_link"/>
+    <origin rpy="0 0 3.14159" xyz="-0.1775 -0.2865 0.13"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+  </joint>
+  <transmission name="rear_right_wheel_trans" type="SimpleTransmission">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="rear_right_wheel_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </actuator>
+    <joint name="rear_right_wheel">
+      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+  <!-- Laser -->
+  <joint name="laser_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.205 0 0.315"/>
+    <parent link="base_link"/>
+    <child link="laser_link"/>
+  </joint>
+  <link name="laser_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.065 0.09 0.1"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 255 0.8"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.065 0.09 0.1"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Camera -->
+  <joint name="camera_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0.2775 -0.045 0.15"/>
+    <parent link="base_link"/>
+    <child link="camera_link"/>
+  </joint>
+  <link name="camera_link">
+    <visual>
+      <origin rpy="0 1.570795 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.01" radius="0.0125"/>
+      </geometry>
+      <material name="red">
+        <color rgba="255 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin rpy="0 1.570795 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.1" radius="0.0125"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- GPS -->
+  <joint name="gps_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.175"/>
+    <parent link="base_link"/>
+    <child link="gps_link"/>
+  </joint>
+  <link name="gps_link"/>
+  <gazebo>
+	  <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+	    <updateRate>100.0</updateRate>
+	    <robotNamespace>/</robotNamespace>
+	    <leftFrontJoint>front_left_wheel</leftFrontJoint>
+	    <rightFrontJoint>front_right_wheel</rightFrontJoint>
+	    <leftRearJoint>rear_left_wheel</leftRearJoint>
+	    <rightRearJoint>rear_right_wheel</rightRearJoint>
+	    <wheelSeparation>0.4</wheelSeparation>
+	    <wheelDiameter>0.215</wheelDiameter>
+	    <robotBaseFrame>base_link</robotBaseFrame>
+	    <torque>20</torque>
+	    <topicName>cmd_vel</topicName>
+	    <broadcastTF>false</broadcastTF>
+	  </plugin>
+  </gazebo>	
+
+  <gazebo>
+    <plugin name="gazebo_ros_gps" filename="libhector_gazebo_ros_gps.so">
+      <updateRate>4.0</updateRate>
+      <bodyName>gps_link</bodyName>
+      <frameId>gps_link</frameId>
+      <topicName>/gps/fix</topicName>
+      <velocityTopicName>/gps/fix_velocity</velocityTopicName>
+      <referenceLatitude>-30.06022459407145675</referenceLatitude>
+      <referenceLongitude>-51.173913575780311191</referenceLongitude>
+      <referenceHeading>90</referenceHeading>
+      <referenceAltitude>10</referenceAltitude>
+      <offset>0 0 0</offset>
+      <drift>0.00 0.00 0.00</drift>
+      <gaussianNoise>0.0 0.0 0.0</gaussianNoise>
+      <velocityDrift>0.00 0.00 0.00</velocityDrift>
+      <velocityGaussianNoise>0 0 0</velocityGaussianNoise>
+    </plugin>
+  </gazebo> 
+	 
+  <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/jaguar_robot</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+</robot>
