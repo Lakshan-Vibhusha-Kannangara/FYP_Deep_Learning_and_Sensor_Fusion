@@ -28,3 +28,11 @@ https://user-images.githubusercontent.com/77208138/235839158-e2398dbe-ba29-4e7f-
 
 
 <img width="932" alt="Screenshot 2023-05-03 at 11 14 28" src="https://user-images.githubusercontent.com/77208138/235840257-ea468af5-0155-4173-b158-f824dc9b5c55.png">
+
+
+Demonstrations at EXMO
+
+
+
+https://github.com/Lakshan-Vibhusha-Kannangara/FYP_Deep_Learning_and_Sensor_Fusion/assets/77208138/48b9cd10-252f-4424-a100-0da55523a6cc
+
