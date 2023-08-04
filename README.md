@@ -4,7 +4,11 @@ Robot Platform-Dr Robot Jaguar
 
 
 
-https://user-images.githubusercontent.com/77208138/235839577-5a269695-533c-4510-a6c4-3a0ebdd944e2.mp4
+https://github.com/Lakshan-Vibhusha-Kannangara/FYP_Deep_Learning_and_Sensor_Fusion/assets/77208138/4e319fe6-f491-4f09-b4be-90504ef7abdb
+
+
+
+
 
 
 
